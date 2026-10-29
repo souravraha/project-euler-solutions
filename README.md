@@ -1,6 +1,6 @@
 # Project Euler Solutions
 
-Solutions to [Project Euler](https://projecteuler.net/) problems in **Python** - **6** so far, more on the way.
+Solutions to [Project Euler](https://projecteuler.net/) problems in **Python** - **7** so far, more on the way.
 
 > Profile: [projecteuler.net/profile/YOUR_USERNAME](https://projecteuler.net/profile/YOUR_USERNAME)
 
@@ -16,6 +16,7 @@ Solutions to [Project Euler](https://projecteuler.net/) problems in **Python** -
 | 301 | Nim, nim-sum of (n, 2n, 3n) below 2^30 | 2178309 |
 | 310 | Nim Square, losing triples a<=b<=c<=100,000 | 2586528661783 |
 | 560 | Coprime Nim, L(10^7, 10^7) mod 10^9+7 | 994345168 |
+| 629 | Scatterstone Nim, g(200) mod 10^9+7 | 626616617 |
 
 ## Highlights
 
@@ -29,6 +30,7 @@ A few problems I find particularly interesting, with notes on the approach:
 | 301 | Nim | Nim-sum zero iff no two adjacent 1-bits in n | Count via Fibonacci `F(32)` - [writeup](notes/301_nim.md) |
 | 310 | Nim Square | Grundy (square-subtraction) + Burnside orbits | `O(N sqrt N)` - [writeup](notes/310_nim-square.md) |
 | 560 | Coprime Nim | Grundy closed form `pi(spf)` + Walsh-Hadamard | `O(n log log n)` - [writeup](notes/560_coprime-nim.md) |
+| 629 | Scatterstone Nim | Grundy (k=2 parity, k=3 mex, k>=4 = s-1) + XOR partition DP | `O(n^3 + n^2 X)` - [writeup](notes/629_scatterstone-nim.md) |
 
 Each highlight links to a short writeup in [`notes/`](notes/) covering:
 
@@ -60,6 +62,7 @@ python3 python/008_largest_product_in_a_series.py  # -> 23514624000
 python3 python/301_nim.py                        # -> 2178309
 python3 python/310_nim_square.py                 # -> 2586528661783
 python3 python/560_coprime_nim.py                # -> 994345168
+python3 python/629_scatterstone_nim.py           # -> 626616617
 ```
 
 ## Conventions
