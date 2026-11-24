@@ -1,18 +1,20 @@
 """Problem 301: Nim.
 
-Count the positive integers n <= 2**30 for which the normal-play
-three-heap Nim position X(n, 2n, 3n) is a losing position, i.e. has
-nim-sum 0. Answer: 2178309.
+Count the positive integers n <= 2**30 for which the three-heap,
+normal-play Nim position X(n, 2n, 3n) has nim-sum 0 (a losing position).
+Answer: 2178309 (= F(32)).
 
-Insight: the nim-sum is 0 exactly when n XOR 2n XOR 3n = 0. Because
-3n = n + 2n, that holds exactly when adding n and 2n produces no carry,
-i.e. when n and 2n have no bit set in common. Since 2n is just n
-shifted left by one, two such bits coincide exactly when n has two
-adjacent 1-bits. So the answer is the count of n in [1, 2**30] with no
-two adjacent 1-bits in binary, a Fibonacci number F(L + 2) over
-L-bit strings. For L = 30 that is F(32) = 2178309; adding 2**30 (a
-single set bit, so valid) while dropping n = 0 (also valid) nets out,
-leaving the answer equal to the L-bit count.
+Insight: n ^ 2n ^ 3n = 0 because 3n = n + 2n, and a sum equals the xor
+exactly when no carry is produced. So the nim-sum vanishes iff adding n
+and 2n creates no carry, i.e. n and 2n share no set bit. Since 2n = n << 1,
+two such bits coincide exactly when n has two adjacent 1-bits. Hence the
+losing n are exactly those with no two adjacent 1-bits.
+
+Counting: L-bit binary strings with no adjacent 1-bits number F(L + 2)
+(recurrence f(1) = 2, f(2) = 3, f(L) = f(L-1) + f(L-2)), so [0, 2**30)
+holds F(32) of them. The range [1, 2**30] differs by dropping n = 0 (valid)
+and adding 2**30 (a single set bit, also valid) - the swap cancels, so the
+answer is exactly F(32) = 2178309.
 """
 
 

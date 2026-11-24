@@ -43,8 +43,6 @@ project-euler-solutions/
 `-- notes/           # writeups for highlighted problems
 ```
 
-(`notes/022_amicable-numbers.md` is a sample showing the writeup format - swap it for a writeup you're proud of.)
-
 Solutions follow a single convention: read the problem from `projecteuler.net`, compute the answer, and print it. Any non-trivial insight lives in a comment at the top of the file and (for highlighted problems) in `notes/`.
 
 ## How to Run

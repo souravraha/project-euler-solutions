@@ -53,7 +53,7 @@ X = 256  # every G_k(s) with s <= 200 is < 256, hence every xor of them is too
 
 
 def partition_numbers(n, mod):
-    """p[0..n] = number of integer partitions, each value taken mod.`"""
+    """p[0..n] = number of integer partitions, each value taken mod."""
     p = [0] * (n + 1)
     p[0] = 1
     for s in range(1, n + 1):

@@ -35,8 +35,14 @@ import math
 MOD = 1_000_000_007
 
 
-def ordinal_by_spf(n: int) -> tuple[int, list[int]]:
-    """Return (max_ordinal, ord) where ord[v] = pi(spf(v)) for odd v >= 3."""
+def ordinal_by_spf(n: int):
+    """Return (max_ordinal, ord_arr, spf) for m in [0, n].
+
+    spf[m]       = smallest prime factor of m (0 for m < 2)
+    ord_arr[m]   = pi(spf(m)), the 1-indexed ordinal of spf(m) among the
+                   primes (pi(2)=1, pi(3)=2, pi(5)=3, ...); 0 otherwise
+    max_ordinal  = pi(largest prime <= n)
+    """
     spf = array("I", range(n + 1))
     if n >= 1:
         spf[0] = spf[1] = 0
@@ -47,18 +53,19 @@ def ordinal_by_spf(n: int) -> tuple[int, list[int]]:
                     spf[j] = i
     ord_arr = array("I", [0]) * (n + 1)
     ordinal = 0
-    max_ordinal = 0
     for v in range(2, n + 1):
-        if spf[v] == v:
+        if spf[v] == v:                         # v is prime
             ordinal += 1
-            ord_arr[v] = ordinal                 # pi(v), 1-indexed
-            if ordinal > max_ordinal:
-                max_ordinal = ordinal
-    return max_ordinal, ord_arr, spf
+            ord_arr[v] = ordinal                # pi(v), 1-indexed
+    return ordinal, ord_arr, spf
 
 
 def grundy_frequency(n: int):
-    """freq[v] = #{ pile sizes in [1, n] with Grundy value v } (n even-bound)."""
+    """freq[v] = #{ pile sizes m in [1, n] with Grundy value v }.
+
+    freq[0] = n // 2 (the even sizes), freq[1] = 1 (the single size 1),
+    and every odd m >= 3 lands in the bin pi(spf(m)).
+    """
     max_ordinal, ord_arr, spf = ordinal_by_spf(n)
     size = 1
     while size <= max_ordinal:
