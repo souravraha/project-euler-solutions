@@ -1,10 +1,6 @@
 # Project Euler Solutions
 
-Solutions to [Project Euler](https://projecteuler.net/) problems in **Python** - **7** so far, more on the way.
-
-> Profile: [projecteuler.net/profile/YOUR_USERNAME](https://projecteuler.net/profile/YOUR_USERNAME)
-
-> Note: replace the placeholder profile link above with your real link before publishing.
+Solutions to [Project Euler](https://projecteuler.net/) problems in **Python** - **7** so far, still learning and more on the way.
 
 ## Solved
 
